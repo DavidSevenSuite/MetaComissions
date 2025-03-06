@@ -31,6 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.tbMenu = new System.Windows.Forms.TabControl();
             this.tbPutClie = new System.Windows.Forms.TabPage();
+            this.chComi = new System.Windows.Forms.CheckBox();
+            this.lblMsgError = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnClean = new System.Windows.Forms.Button();
+            this.txtRefer = new System.Windows.Forms.TextBox();
+            this.txtArti = new System.Windows.Forms.TextBox();
+            this.txtIden = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtTelef = new System.Windows.Forms.TextBox();
+            this.txtNomClie = new System.Windows.Forms.TextBox();
             this.lblComi = new System.Windows.Forms.Label();
             this.lblRefer = new System.Windows.Forms.Label();
             this.lblArti = new System.Windows.Forms.Label();
@@ -41,16 +51,7 @@
             this.gbDatosGen = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbGetClie = new System.Windows.Forms.TabPage();
-            this.txtNomClie = new System.Windows.Forms.TextBox();
-            this.txtTelef = new System.Windows.Forms.TextBox();
-            this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.txtIden = new System.Windows.Forms.TextBox();
-            this.txtArti = new System.Windows.Forms.TextBox();
-            this.txtRefer = new System.Windows.Forms.TextBox();
-            this.rbComi1 = new System.Windows.Forms.RadioButton();
-            this.rbComi2 = new System.Windows.Forms.RadioButton();
-            this.btnClean = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.tbDtSql = new System.Windows.Forms.TabPage();
             this.tbMenu.SuspendLayout();
             this.tbPutClie.SuspendLayout();
             this.gbDatosGen.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             this.tbMenu.Controls.Add(this.tbPutClie);
             this.tbMenu.Controls.Add(this.tbGetClie);
+            this.tbMenu.Controls.Add(this.tbDtSql);
             this.tbMenu.Location = new System.Drawing.Point(13, 25);
             this.tbMenu.Margin = new System.Windows.Forms.Padding(4);
             this.tbMenu.Name = "tbMenu";
@@ -69,12 +71,12 @@
             // 
             // tbPutClie
             // 
-            this.tbPutClie.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbPutClie.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbPutClie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPutClie.Controls.Add(this.chComi);
+            this.tbPutClie.Controls.Add(this.lblMsgError);
             this.tbPutClie.Controls.Add(this.btnGuardar);
             this.tbPutClie.Controls.Add(this.btnClean);
-            this.tbPutClie.Controls.Add(this.rbComi2);
-            this.tbPutClie.Controls.Add(this.rbComi1);
             this.tbPutClie.Controls.Add(this.txtRefer);
             this.tbPutClie.Controls.Add(this.txtArti);
             this.tbPutClie.Controls.Add(this.txtIden);
@@ -90,6 +92,7 @@
             this.tbPutClie.Controls.Add(this.lblNomClie);
             this.tbPutClie.Controls.Add(this.gbDatosGen);
             this.tbPutClie.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPutClie.ForeColor = System.Drawing.Color.Transparent;
             this.tbPutClie.Location = new System.Drawing.Point(4, 25);
             this.tbPutClie.Margin = new System.Windows.Forms.Padding(4);
             this.tbPutClie.Name = "tbPutClie";
@@ -97,6 +100,107 @@
             this.tbPutClie.Size = new System.Drawing.Size(898, 542);
             this.tbPutClie.TabIndex = 0;
             this.tbPutClie.Text = "Insertar Clientes";
+            // 
+            // chComi
+            // 
+            this.chComi.AutoSize = true;
+            this.chComi.BackColor = System.Drawing.Color.Transparent;
+            this.chComi.Location = new System.Drawing.Point(629, 301);
+            this.chComi.Name = "chComi";
+            this.chComi.Size = new System.Drawing.Size(15, 14);
+            this.chComi.TabIndex = 19;
+            this.chComi.UseVisualStyleBackColor = false;
+            // 
+            // lblMsgError
+            // 
+            this.lblMsgError.AutoSize = true;
+            this.lblMsgError.BackColor = System.Drawing.Color.LightCoral;
+            this.lblMsgError.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMsgError.Enabled = false;
+            this.lblMsgError.ForeColor = System.Drawing.Color.Maroon;
+            this.lblMsgError.Location = new System.Drawing.Point(354, 68);
+            this.lblMsgError.Name = "lblMsgError";
+            this.lblMsgError.Size = new System.Drawing.Size(2, 20);
+            this.lblMsgError.TabIndex = 18;
+            this.lblMsgError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMsgError.Visible = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Red;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(479, 481);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(112, 35);
+            this.btnGuardar.TabIndex = 17;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnClean
+            // 
+            this.btnClean.BackColor = System.Drawing.Color.Red;
+            this.btnClean.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClean.ForeColor = System.Drawing.Color.White;
+            this.btnClean.Location = new System.Drawing.Point(354, 481);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(112, 35);
+            this.btnClean.TabIndex = 16;
+            this.btnClean.Text = "Limpiar Todo";
+            this.btnClean.UseVisualStyleBackColor = false;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
+            // txtRefer
+            // 
+            this.txtRefer.Location = new System.Drawing.Point(629, 210);
+            this.txtRefer.Multiline = true;
+            this.txtRefer.Name = "txtRefer";
+            this.txtRefer.Size = new System.Drawing.Size(260, 34);
+            this.txtRefer.TabIndex = 13;
+            // 
+            // txtArti
+            // 
+            this.txtArti.Location = new System.Drawing.Point(629, 124);
+            this.txtArti.Multiline = true;
+            this.txtArti.Name = "txtArti";
+            this.txtArti.Size = new System.Drawing.Size(260, 33);
+            this.txtArti.TabIndex = 12;
+            // 
+            // txtIden
+            // 
+            this.txtIden.Location = new System.Drawing.Point(206, 381);
+            this.txtIden.Multiline = true;
+            this.txtIden.Name = "txtIden";
+            this.txtIden.Size = new System.Drawing.Size(260, 36);
+            this.txtIden.TabIndex = 11;
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(206, 298);
+            this.txtCorreo.Multiline = true;
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(260, 35);
+            this.txtCorreo.TabIndex = 10;
+            this.txtCorreo.TextChanged += new System.EventHandler(this.txtCorreo_TextChanged);
+            // 
+            // txtTelef
+            // 
+            this.txtTelef.Location = new System.Drawing.Point(206, 216);
+            this.txtTelef.Multiline = true;
+            this.txtTelef.Name = "txtTelef";
+            this.txtTelef.Size = new System.Drawing.Size(260, 34);
+            this.txtTelef.TabIndex = 9;
+            this.txtTelef.TextChanged += new System.EventHandler(this.txtTelef_TextChanged);
+            // 
+            // txtNomClie
+            // 
+            this.txtNomClie.Location = new System.Drawing.Point(206, 124);
+            this.txtNomClie.Multiline = true;
+            this.txtNomClie.Name = "txtNomClie";
+            this.txtNomClie.Size = new System.Drawing.Size(260, 33);
+            this.txtNomClie.TabIndex = 8;
+            this.txtNomClie.TextChanged += new System.EventHandler(this.txtNomClie_TextChanged);
             // 
             // lblComi
             // 
@@ -215,101 +319,16 @@
             this.tbGetClie.TabIndex = 1;
             this.tbGetClie.Text = "Buscar Clientes";
             // 
-            // txtNomClie
+            // tbDtSql
             // 
-            this.txtNomClie.Location = new System.Drawing.Point(206, 124);
-            this.txtNomClie.Multiline = true;
-            this.txtNomClie.Name = "txtNomClie";
-            this.txtNomClie.Size = new System.Drawing.Size(260, 33);
-            this.txtNomClie.TabIndex = 8;
-            // 
-            // txtTelef
-            // 
-            this.txtTelef.Location = new System.Drawing.Point(206, 216);
-            this.txtTelef.Multiline = true;
-            this.txtTelef.Name = "txtTelef";
-            this.txtTelef.Size = new System.Drawing.Size(260, 34);
-            this.txtTelef.TabIndex = 9;
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.Location = new System.Drawing.Point(206, 298);
-            this.txtCorreo.Multiline = true;
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(260, 35);
-            this.txtCorreo.TabIndex = 10;
-            // 
-            // txtIden
-            // 
-            this.txtIden.Location = new System.Drawing.Point(206, 381);
-            this.txtIden.Multiline = true;
-            this.txtIden.Name = "txtIden";
-            this.txtIden.Size = new System.Drawing.Size(260, 36);
-            this.txtIden.TabIndex = 11;
-            // 
-            // txtArti
-            // 
-            this.txtArti.Location = new System.Drawing.Point(629, 124);
-            this.txtArti.Multiline = true;
-            this.txtArti.Name = "txtArti";
-            this.txtArti.Size = new System.Drawing.Size(260, 33);
-            this.txtArti.TabIndex = 12;
-            // 
-            // txtRefer
-            // 
-            this.txtRefer.Location = new System.Drawing.Point(629, 210);
-            this.txtRefer.Multiline = true;
-            this.txtRefer.Name = "txtRefer";
-            this.txtRefer.Size = new System.Drawing.Size(260, 34);
-            this.txtRefer.TabIndex = 13;
-            // 
-            // rbComi1
-            // 
-            this.rbComi1.AutoSize = true;
-            this.rbComi1.BackColor = System.Drawing.Color.Transparent;
-            this.rbComi1.Checked = true;
-            this.rbComi1.Location = new System.Drawing.Point(629, 299);
-            this.rbComi1.Name = "rbComi1";
-            this.rbComi1.Size = new System.Drawing.Size(39, 22);
-            this.rbComi1.TabIndex = 14;
-            this.rbComi1.TabStop = true;
-            this.rbComi1.Text = "Si";
-            this.rbComi1.UseVisualStyleBackColor = false;
-            // 
-            // rbComi2
-            // 
-            this.rbComi2.AutoSize = true;
-            this.rbComi2.Location = new System.Drawing.Point(693, 299);
-            this.rbComi2.Name = "rbComi2";
-            this.rbComi2.Size = new System.Drawing.Size(46, 22);
-            this.rbComi2.TabIndex = 15;
-            this.rbComi2.Text = "No";
-            this.rbComi2.UseVisualStyleBackColor = true;
-            // 
-            // btnClean
-            // 
-            this.btnClean.BackColor = System.Drawing.Color.Red;
-            this.btnClean.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClean.ForeColor = System.Drawing.Color.White;
-            this.btnClean.Location = new System.Drawing.Point(354, 481);
-            this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(112, 35);
-            this.btnClean.TabIndex = 16;
-            this.btnClean.Text = "Limpiar Todo";
-            this.btnClean.UseVisualStyleBackColor = false;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Red;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(479, 481);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(112, 35);
-            this.btnGuardar.TabIndex = 17;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.tbDtSql.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbDtSql.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDtSql.Location = new System.Drawing.Point(4, 25);
+            this.tbDtSql.Name = "tbDtSql";
+            this.tbDtSql.Padding = new System.Windows.Forms.Padding(3);
+            this.tbDtSql.Size = new System.Drawing.Size(898, 542);
+            this.tbDtSql.TabIndex = 2;
+            this.tbDtSql.Text = "Datos SQL";
             // 
             // Menu
             // 
@@ -351,9 +370,10 @@
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtTelef;
         private System.Windows.Forms.TextBox txtNomClie;
-        private System.Windows.Forms.RadioButton rbComi2;
-        private System.Windows.Forms.RadioButton rbComi1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Label lblMsgError;
+        private System.Windows.Forms.CheckBox chComi;
+        private System.Windows.Forms.TabPage tbDtSql;
     }
 }
