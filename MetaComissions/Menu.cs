@@ -90,7 +90,7 @@ namespace MetaComissions
             // Se envia a la clase Access aqui es donde se conecta con el SQL y inserta los datos
             int res;
 
-            res = Access.PutClientes(elemento);
+            //res = Access.PutClientes(elemento);
 
 
         }
@@ -116,5 +116,51 @@ namespace MetaComissions
             }
         }
 
+        #region Guardar y cargar datos del connection string
+
+        // Region 1.99
+        //Registrar datos de la instancia del SQL
+        private void btnRegristar_Click(object sender, EventArgs e)
+        {
+            // Guardando los datos del connection string en el App.config
+            ConnectionString elemento = new ConnectionString();
+
+            Properties.Settings.Default.DataSource = txtDataSource.Text;
+            Properties.Settings.Default.DataBase = txtDataBase.Text;
+            Properties.Settings.Default.User = txtUser.Text;
+            Properties.Settings.Default.Password = txtPassword.Text;
+            Properties.Settings.Default.Save();
+
+            elemento.DataSource = Properties.Settings.Default.DataSource;
+            elemento.DataBase = Properties.Settings.Default.DataBase;
+            elemento.User = Properties.Settings.Default.User;
+            elemento.Password = Properties.Settings.Default.Password;
+
+            if(txtDataSource.Text.Length != 0 || txtDataBase.Text.Length != 0 ||
+               txtUser.Text.Length != 0 || txtPassword.Text.Length != 0)
+            {
+                 MessageBox.Show("Datos guardados con exito!", "Exito!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Por favor verifique sus datos ya que estan vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Funcion para cargar los datos del connection en los campos en el Load del form
+        private void ChargeConfig()
+        {
+            txtDataSource.Text = Properties.Settings.Default.DataSource;
+            txtDataBase.Text = Properties.Settings.Default.DataBase;
+            txtUser.Text = Properties.Settings.Default.User;
+            txtPassword.Text = Properties.Settings.Default.Password; ; Console.WriteLine(Properties.Settings.Default.DataSource);
+        }
+
+        #endregion
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            ChargeConfig();
+        }
     }
 }
