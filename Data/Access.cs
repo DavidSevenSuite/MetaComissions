@@ -10,20 +10,20 @@ namespace Data
 {
     public class Access
     {
-        #region Clientes
+       #region Clientes
 
-        public static int PutClientes(Clientes elemento)
-        {
-            try
-            {
-                SqlConnection conn = new SqlConnection();
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //public static int PutClientes(Clientes elemento)
+        //{
+        //    try
+        //    {
+        //        SqlConnection conn = new SqlConnection();
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        #endregion
+        #endregion 
     }
 }

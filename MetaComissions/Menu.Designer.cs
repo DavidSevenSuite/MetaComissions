@@ -52,9 +52,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbGetClie = new System.Windows.Forms.TabPage();
             this.tbDtSql = new System.Windows.Forms.TabPage();
+            this.btnRegristar = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtDataBase = new System.Windows.Forms.TextBox();
+            this.txtDataSource = new System.Windows.Forms.TextBox();
+            this.lblPass = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblDataBase = new System.Windows.Forms.Label();
+            this.lblDataSource = new System.Windows.Forms.Label();
+            this.lblDatos = new System.Windows.Forms.Label();
             this.tbMenu.SuspendLayout();
             this.tbPutClie.SuspendLayout();
             this.gbDatosGen.SuspendLayout();
+            this.tbDtSql.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbMenu
@@ -323,12 +334,120 @@
             // 
             this.tbDtSql.BackColor = System.Drawing.Color.Gainsboro;
             this.tbDtSql.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDtSql.Controls.Add(this.btnRegristar);
+            this.tbDtSql.Controls.Add(this.txtPassword);
+            this.tbDtSql.Controls.Add(this.txtUser);
+            this.tbDtSql.Controls.Add(this.txtDataBase);
+            this.tbDtSql.Controls.Add(this.txtDataSource);
+            this.tbDtSql.Controls.Add(this.lblPass);
+            this.tbDtSql.Controls.Add(this.lblUser);
+            this.tbDtSql.Controls.Add(this.lblDataBase);
+            this.tbDtSql.Controls.Add(this.lblDataSource);
+            this.tbDtSql.Controls.Add(this.lblDatos);
             this.tbDtSql.Location = new System.Drawing.Point(4, 25);
             this.tbDtSql.Name = "tbDtSql";
             this.tbDtSql.Padding = new System.Windows.Forms.Padding(3);
             this.tbDtSql.Size = new System.Drawing.Size(898, 542);
             this.tbDtSql.TabIndex = 2;
             this.tbDtSql.Text = "Datos SQL";
+            // 
+            // btnRegristar
+            // 
+            this.btnRegristar.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegristar.Location = new System.Drawing.Point(444, 476);
+            this.btnRegristar.Name = "btnRegristar";
+            this.btnRegristar.Size = new System.Drawing.Size(110, 29);
+            this.btnRegristar.TabIndex = 9;
+            this.btnRegristar.Text = "Registrar";
+            this.btnRegristar.UseVisualStyleBackColor = true;
+            this.btnRegristar.Click += new System.EventHandler(this.btnRegristar_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(188, 388);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(309, 33);
+            this.txtPassword.TabIndex = 8;
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(188, 306);
+            this.txtUser.Multiline = true;
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(309, 33);
+            this.txtUser.TabIndex = 7;
+            // 
+            // txtDataBase
+            // 
+            this.txtDataBase.Location = new System.Drawing.Point(188, 219);
+            this.txtDataBase.Multiline = true;
+            this.txtDataBase.Name = "txtDataBase";
+            this.txtDataBase.Size = new System.Drawing.Size(309, 33);
+            this.txtDataBase.TabIndex = 6;
+            // 
+            // txtDataSource
+            // 
+            this.txtDataSource.Location = new System.Drawing.Point(188, 137);
+            this.txtDataSource.Multiline = true;
+            this.txtDataSource.Name = "txtDataSource";
+            this.txtDataSource.Size = new System.Drawing.Size(309, 33);
+            this.txtDataSource.TabIndex = 5;
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.BackColor = System.Drawing.Color.Transparent;
+            this.lblPass.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPass.Location = new System.Drawing.Point(60, 390);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(82, 18);
+            this.lblPass.TabIndex = 4;
+            this.lblPass.Text = "Password:";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblUser.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(60, 308);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(47, 18);
+            this.lblUser.TabIndex = 3;
+            this.lblUser.Text = "User:";
+            // 
+            // lblDataBase
+            // 
+            this.lblDataBase.AutoSize = true;
+            this.lblDataBase.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataBase.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataBase.Location = new System.Drawing.Point(60, 221);
+            this.lblDataBase.Name = "lblDataBase";
+            this.lblDataBase.Size = new System.Drawing.Size(82, 18);
+            this.lblDataBase.TabIndex = 2;
+            this.lblDataBase.Text = "DataBase:";
+            // 
+            // lblDataSource
+            // 
+            this.lblDataSource.AutoSize = true;
+            this.lblDataSource.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataSource.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataSource.Location = new System.Drawing.Point(60, 139);
+            this.lblDataSource.Name = "lblDataSource";
+            this.lblDataSource.Size = new System.Drawing.Size(97, 18);
+            this.lblDataSource.TabIndex = 1;
+            this.lblDataSource.Text = "DataSource:";
+            // 
+            // lblDatos
+            // 
+            this.lblDatos.AutoSize = true;
+            this.lblDatos.BackColor = System.Drawing.Color.Transparent;
+            this.lblDatos.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatos.Location = new System.Drawing.Point(57, 34);
+            this.lblDatos.Name = "lblDatos";
+            this.lblDatos.Size = new System.Drawing.Size(92, 33);
+            this.lblDatos.TabIndex = 0;
+            this.lblDatos.Text = "Datos";
             // 
             // Menu
             // 
@@ -341,11 +460,14 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.tbMenu.ResumeLayout(false);
             this.tbPutClie.ResumeLayout(false);
             this.tbPutClie.PerformLayout();
             this.gbDatosGen.ResumeLayout(false);
             this.gbDatosGen.PerformLayout();
+            this.tbDtSql.ResumeLayout(false);
+            this.tbDtSql.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -375,5 +497,15 @@
         private System.Windows.Forms.Label lblMsgError;
         private System.Windows.Forms.CheckBox chComi;
         private System.Windows.Forms.TabPage tbDtSql;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtDataBase;
+        private System.Windows.Forms.TextBox txtDataSource;
+        private System.Windows.Forms.Label lblPass;
+        private System.Windows.Forms.Label lblDataBase;
+        private System.Windows.Forms.Label lblDataSource;
+        private System.Windows.Forms.Label lblDatos;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnRegristar;
+        private System.Windows.Forms.Label lblUser;
     }
 }
