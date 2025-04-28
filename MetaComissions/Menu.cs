@@ -15,9 +15,13 @@ namespace MetaComissions
     public partial class Menu : Form
     {
 
+        private bool _vEliminado = false;
+
         public Menu()
         {
             InitializeComponent();
+            dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 
         private void txtNomClie_TextChanged(object sender, EventArgs e)
@@ -228,10 +232,13 @@ namespace MetaComissions
                 dataGridView1.Columns["Identificacion"].HeaderText = "Iden.";
                 dataGridView1.Columns["Arti_vendi"].HeaderText = "Articulo";
                 dataGridView1.Columns["referencia"].HeaderText = "Referencia";
-                column.Name = "Comision";
-                column.HeaderText = "Comision";
-                dataGridView1.Columns.Add(column);
-                dataGridView1.Columns["Comi"].DataPropertyName = "Comision";
+                if (!dataGridView1.Columns.Contains("Comi"))
+                {
+                    column.Name = "Comi";
+                    column.HeaderText = "Comision";
+                    column.DataPropertyName = "Comision";
+                    dataGridView1.Columns.Add(column);
+                }
             }
             catch (Exception ex)
             {
@@ -243,16 +250,65 @@ namespace MetaComissions
         {
             Clientes elemento = new Clientes();
 
-            int id_clie = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].ToString());
-            elemento.nombre_clie = dataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+            int id_clie = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString());
+            elemento.nombre_clie = dataGridView1.Rows[e.RowIndex].Cells["Nombre_clie"].Value.ToString();
             elemento.telefono = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Telefono"].Value.ToString());
-            elemento.correo = dataGridView1.Rows[e.RowIndex].Cells["Telefono"].Value.ToString();
-            elemento.identificacion = int.Parse(dataGridView1.Rows[e.RowIndex].Cells.ToString());
-            elemento.articulo_vendi = dataGridView1.Rows[e.RowIndex].Cells["Artiuclo"].ToString();
-            elemento.referencia = dataGridView1.Rows[e.RowIndex].Cells["Referencia"].ToString();
-            elemento.comision = bool.Parse(dataGridView1.Rows[e.RowIndex].Cells["Comision"].ToString());
+            elemento.correo = dataGridView1.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+            elemento.identificacion = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["Identificacion"].Value.ToString());
+            elemento.articulo_vendi = dataGridView1.Rows[e.RowIndex].Cells["Arti_vendi"].Value.ToString();
+            elemento.referencia = dataGridView1.Rows[e.RowIndex].Cells["referencia"].Value.ToString();
+            elemento.comision = bool.Parse(dataGridView1.Rows[e.RowIndex].Cells["Comi"].Value.ToString());
 
-            Access.PutClientes(id_clie, elemento, false);
+            Access.PutClientes(id_clie, elemento, _vEliminado);
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            btnSaveGrid.Enabled = true;
+            btnDeleteGrid.Enabled = true;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSaveGrid.Enabled = true;
+            btnDeleteGrid.Enabled = true;
+        }
+
+        private void btnSaveGrid_Click(object sender, EventArgs e)
+        {
+            dataGridView1.EndEdit();
+            var cell = dataGridView1.CurrentCell;
+
+            if (cell != null)
+            {
+                _vEliminado = false;
+                var events = new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex);
+                dataGridView1_CellEndEdit(dataGridView1, events);
+            }
+            btnSaveGrid.Enabled = false;
+            btnDeleteGrid.Enabled = false;
+        }
+
+        private void btnDeleteGrid_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.CurrentRow != null && !dataGridView1.CurrentRow.IsNewRow)
+            {
+                dataGridView1.EndEdit();
+                var cell = dataGridView1.CurrentCell;
+
+                if (cell != null)
+                {
+                    _vEliminado = true;
+                    var events = new DataGridViewCellEventArgs(cell.ColumnIndex, cell.RowIndex);
+                    dataGridView1_CellEndEdit(dataGridView1, events);
+
+                    DataTable dt = ((DataTable)dataGridView1.DataSource);
+                    dt.Rows.RemoveAt(dataGridView1.CurrentCell.RowIndex);
+                }
+
+            }
+            btnDeleteGrid.Enabled = false;
+            btnSaveGrid.Enabled = false;
         }
     }
 }

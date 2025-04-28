@@ -20,7 +20,7 @@ namespace Data
             {
                 DataTable dt = new DataTable();
                 SqlConnection conn = new SqlConnection(Configuracion.CONEXION_MAIN(ConnectionString.DataSource));
-                SqlCommand comando = new SqlCommand("EXEC [MCMS__Clientes_GetInfo] @FilNombreClie, @FilTelefono, @FilCorreo, @FilIdentifiacion, @FilArti_vendi, @FilReferencia, @FilComision", conn);
+                SqlCommand comando = new SqlCommand("EXEC [MCMS_Clientes_GetInfo] @FilNombreClie, @FilTelefono, @FilCorreo, @FilIdentifiacion, @FilArti_vendi, @FilReferencia, @FilComision", conn);
                 SqlParameter param;
                 param = comando.Parameters.Add("@FilNombreClie", SqlDbType.NVarChar, 1000);
                 param.Value = elemento.Filnombre_clie;
