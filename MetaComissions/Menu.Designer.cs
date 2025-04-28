@@ -52,6 +52,7 @@
             this.gbDatosGen = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbGetClie = new System.Windows.Forms.TabPage();
+            this.btnSaveGrid = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cbFilComi = new System.Windows.Forms.CheckBox();
@@ -79,6 +80,7 @@
             this.lblDataBase = new System.Windows.Forms.Label();
             this.lblDataSource = new System.Windows.Forms.Label();
             this.lblDatos = new System.Windows.Forms.Label();
+            this.btnDeleteGrid = new System.Windows.Forms.Button();
             this.tbMenu.SuspendLayout();
             this.tbPutClie.SuspendLayout();
             this.gbDatosGen.SuspendLayout();
@@ -349,6 +351,8 @@
             // tbGetClie
             // 
             this.tbGetClie.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbGetClie.Controls.Add(this.btnDeleteGrid);
+            this.tbGetClie.Controls.Add(this.btnSaveGrid);
             this.tbGetClie.Controls.Add(this.btnBuscar);
             this.tbGetClie.Controls.Add(this.dataGridView1);
             this.tbGetClie.Controls.Add(this.cbFilComi);
@@ -374,12 +378,26 @@
             this.tbGetClie.TabIndex = 1;
             this.tbGetClie.Text = "Buscar Clientes";
             // 
+            // btnSaveGrid
+            // 
+            this.btnSaveGrid.BackColor = System.Drawing.Color.Red;
+            this.btnSaveGrid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSaveGrid.Enabled = false;
+            this.btnSaveGrid.ForeColor = System.Drawing.Color.White;
+            this.btnSaveGrid.Location = new System.Drawing.Point(402, 509);
+            this.btnSaveGrid.Name = "btnSaveGrid";
+            this.btnSaveGrid.Size = new System.Drawing.Size(100, 37);
+            this.btnSaveGrid.TabIndex = 36;
+            this.btnSaveGrid.Text = "Guardar";
+            this.btnSaveGrid.UseVisualStyleBackColor = false;
+            this.btnSaveGrid.Click += new System.EventHandler(this.btnSaveGrid_Click);
+            // 
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.Red;
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(325, 509);
+            this.btnBuscar.Location = new System.Drawing.Point(287, 509);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(100, 37);
             this.btnBuscar.TabIndex = 35;
@@ -391,6 +409,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dataGridView1.Location = new System.Drawing.Point(29, 288);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(796, 203);
@@ -661,6 +680,20 @@
             this.lblDatos.TabIndex = 0;
             this.lblDatos.Text = "Datos";
             // 
+            // btnDeleteGrid
+            // 
+            this.btnDeleteGrid.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteGrid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDeleteGrid.Enabled = false;
+            this.btnDeleteGrid.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteGrid.Location = new System.Drawing.Point(514, 509);
+            this.btnDeleteGrid.Name = "btnDeleteGrid";
+            this.btnDeleteGrid.Size = new System.Drawing.Size(100, 37);
+            this.btnDeleteGrid.TabIndex = 37;
+            this.btnDeleteGrid.Text = "Eliminar";
+            this.btnDeleteGrid.UseVisualStyleBackColor = false;
+            this.btnDeleteGrid.Click += new System.EventHandler(this.btnDeleteGrid_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -739,5 +772,7 @@
         private System.Windows.Forms.Label lblFilCorreo;
         private System.Windows.Forms.Label lblFilTelef;
         private System.Windows.Forms.Label lblFilNomClie;
+        private System.Windows.Forms.Button btnSaveGrid;
+        private System.Windows.Forms.Button btnDeleteGrid;
     }
 }
