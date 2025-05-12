@@ -52,6 +52,7 @@
             this.gbDatosGen = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbGetClie = new System.Windows.Forms.TabPage();
+            this.btnDeleteGrid = new System.Windows.Forms.Button();
             this.btnSaveGrid = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -69,6 +70,8 @@
             this.lblFilCorreo = new System.Windows.Forms.Label();
             this.lblFilTelef = new System.Windows.Forms.Label();
             this.lblFilNomClie = new System.Windows.Forms.Label();
+            this.tbReport = new System.Windows.Forms.TabPage();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tbDtSql = new System.Windows.Forms.TabPage();
             this.btnRegristar = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -80,12 +83,12 @@
             this.lblDataBase = new System.Windows.Forms.Label();
             this.lblDataSource = new System.Windows.Forms.Label();
             this.lblDatos = new System.Windows.Forms.Label();
-            this.btnDeleteGrid = new System.Windows.Forms.Button();
             this.tbMenu.SuspendLayout();
             this.tbPutClie.SuspendLayout();
             this.gbDatosGen.SuspendLayout();
             this.tbGetClie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tbReport.SuspendLayout();
             this.tbDtSql.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +96,7 @@
             // 
             this.tbMenu.Controls.Add(this.tbPutClie);
             this.tbMenu.Controls.Add(this.tbGetClie);
+            this.tbMenu.Controls.Add(this.tbReport);
             this.tbMenu.Controls.Add(this.tbDtSql);
             this.tbMenu.Location = new System.Drawing.Point(13, 25);
             this.tbMenu.Margin = new System.Windows.Forms.Padding(4);
@@ -378,6 +382,20 @@
             this.tbGetClie.TabIndex = 1;
             this.tbGetClie.Text = "Buscar Clientes";
             // 
+            // btnDeleteGrid
+            // 
+            this.btnDeleteGrid.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteGrid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDeleteGrid.Enabled = false;
+            this.btnDeleteGrid.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteGrid.Location = new System.Drawing.Point(514, 509);
+            this.btnDeleteGrid.Name = "btnDeleteGrid";
+            this.btnDeleteGrid.Size = new System.Drawing.Size(100, 37);
+            this.btnDeleteGrid.TabIndex = 37;
+            this.btnDeleteGrid.Text = "Eliminar";
+            this.btnDeleteGrid.UseVisualStyleBackColor = false;
+            this.btnDeleteGrid.Click += new System.EventHandler(this.btnDeleteGrid_Click);
+            // 
             // btnSaveGrid
             // 
             this.btnSaveGrid.BackColor = System.Drawing.Color.Red;
@@ -558,6 +576,31 @@
             this.lblFilNomClie.TabIndex = 20;
             this.lblFilNomClie.Text = "Nombre del cliente:";
             // 
+            // tbReport
+            // 
+            this.tbReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbReport.Controls.Add(this.reportViewer1);
+            this.tbReport.Location = new System.Drawing.Point(4, 25);
+            this.tbReport.Name = "tbReport";
+            this.tbReport.Padding = new System.Windows.Forms.Padding(3);
+            this.tbReport.Size = new System.Drawing.Size(898, 566);
+            this.tbReport.TabIndex = 3;
+            this.tbReport.Text = "Reporte";
+            this.tbReport.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.reportViewer1.Cursor = System.Windows.Forms.Cursors.No;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.LocalReport.EnableExternalImages = true;
+            this.reportViewer1.LocalReport.EnableHyperlinks = true;
+            this.reportViewer1.Location = new System.Drawing.Point(3, 3);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(890, 558);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
+            // 
             // tbDtSql
             // 
             this.tbDtSql.BackColor = System.Drawing.Color.Gainsboro;
@@ -680,20 +723,6 @@
             this.lblDatos.TabIndex = 0;
             this.lblDatos.Text = "Datos";
             // 
-            // btnDeleteGrid
-            // 
-            this.btnDeleteGrid.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteGrid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDeleteGrid.Enabled = false;
-            this.btnDeleteGrid.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteGrid.Location = new System.Drawing.Point(514, 509);
-            this.btnDeleteGrid.Name = "btnDeleteGrid";
-            this.btnDeleteGrid.Size = new System.Drawing.Size(100, 37);
-            this.btnDeleteGrid.TabIndex = 37;
-            this.btnDeleteGrid.Text = "Eliminar";
-            this.btnDeleteGrid.UseVisualStyleBackColor = false;
-            this.btnDeleteGrid.Click += new System.EventHandler(this.btnDeleteGrid_Click);
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -714,6 +743,7 @@
             this.tbGetClie.ResumeLayout(false);
             this.tbGetClie.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tbReport.ResumeLayout(false);
             this.tbDtSql.ResumeLayout(false);
             this.tbDtSql.PerformLayout();
             this.ResumeLayout(false);
@@ -774,5 +804,7 @@
         private System.Windows.Forms.Label lblFilNomClie;
         private System.Windows.Forms.Button btnSaveGrid;
         private System.Windows.Forms.Button btnDeleteGrid;
+        private System.Windows.Forms.TabPage tbReport;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

@@ -52,10 +52,10 @@ namespace Data
                 string checkTable = $@"IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '{tableName}')
                 BEGIN
                     CREATE TABLE {tableName} (
-                        Id INT PRIMARY KEY IDENTITY(1,1),
-                        Nombre_clie NVARCHAR(1000),
-                        Telefono INT,
-                        Correo NVARCHAR(100),
+                        Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        Nombre_clie NVARCHAR(1000) NOT NULL,
+                        Telefono INT NOT NULL,
+                        Correo NVARCHAR(100) NOT NULL,
                         Identificacion INT,
                         Arti_vendi NVARCHAR(1000),
                         Referencia NVARCHAR(1000),

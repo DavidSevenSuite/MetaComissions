@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Objects;
 using Data;
+using Microsoft.Reporting.WinForms;
+using System.Web;
 
 namespace MetaComissions
 {
@@ -199,6 +201,8 @@ namespace MetaComissions
         {
             ChargeConfig();
             //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -239,6 +243,22 @@ namespace MetaComissions
                     column.DataPropertyName = "Comision";
                     dataGridView1.Columns.Add(column);
                 }
+
+                // Generar Reporte
+
+                if(dt.Rows.Count > 0)
+                {
+                    reportViewer1.LocalReport.DataSources.Clear();
+
+                    reportViewer1.LocalReport.ReportPath = "Report\\clientes.rdlc";
+
+                    ReportDataSource datos = new ReportDataSource("Clientes", dt);
+
+                    reportViewer1.LocalReport.DataSources.Add(datos);
+
+                    reportViewer1.RefreshReport();
+                }
+                
             }
             catch (Exception ex)
             {
