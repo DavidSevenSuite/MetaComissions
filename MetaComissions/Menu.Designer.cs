@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.tbMenu = new System.Windows.Forms.TabControl();
             this.tbPutClie = new System.Windows.Forms.TabPage();
+            this.btnBuscarFile = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.chComi = new System.Windows.Forms.CheckBox();
             this.lblMsgError = new System.Windows.Forms.Label();
@@ -109,6 +110,7 @@
             // 
             this.tbPutClie.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbPutClie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPutClie.Controls.Add(this.btnBuscarFile);
             this.tbPutClie.Controls.Add(this.progressBar1);
             this.tbPutClie.Controls.Add(this.chComi);
             this.tbPutClie.Controls.Add(this.lblMsgError);
@@ -137,6 +139,22 @@
             this.tbPutClie.Size = new System.Drawing.Size(898, 566);
             this.tbPutClie.TabIndex = 0;
             this.tbPutClie.Text = "Insertar Clientes";
+            // 
+            // btnBuscarFile
+            // 
+            this.btnBuscarFile.BackColor = System.Drawing.Color.Red;
+            this.btnBuscarFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnBuscarFile.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarFile.Image = global::MetaComissions.Properties.Resources.arrow_curve_270;
+            this.btnBuscarFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscarFile.Location = new System.Drawing.Point(765, 68);
+            this.btnBuscarFile.Name = "btnBuscarFile";
+            this.btnBuscarFile.Size = new System.Drawing.Size(96, 35);
+            this.btnBuscarFile.TabIndex = 20;
+            this.btnBuscarFile.Text = "Importar";
+            this.btnBuscarFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscarFile.UseVisualStyleBackColor = true;
+            this.btnBuscarFile.Click += new System.EventHandler(this.btnBuscarFile_Click);
             // 
             // progressBar1
             // 
@@ -597,6 +615,7 @@
             this.reportViewer1.LocalReport.EnableHyperlinks = true;
             this.reportViewer1.Location = new System.Drawing.Point(3, 3);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(890, 558);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
@@ -806,5 +825,6 @@
         private System.Windows.Forms.Button btnDeleteGrid;
         private System.Windows.Forms.TabPage tbReport;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button btnBuscarFile;
     }
 }
