@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Objects;
 using Data;
 using Microsoft.Reporting.WinForms;
-using System.Web;
+using System.IO;
+using OfficeOpenXml;
 
 namespace MetaComissions
 {
@@ -329,6 +325,65 @@ namespace MetaComissions
             }
             btnDeleteGrid.Enabled = false;
             btnSaveGrid.Enabled = false;
+        }
+
+        private void btnBuscarFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Archivos excel|*.xlsx;*.xlsm;*.xls";
+                    openFileDialog.Title = "Seleccione el archivo de Excel";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+
+                        using (ExcelPackage package = new ExcelPackage(fileInfo))
+                        {
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+
+                            int rows = worksheet.Dimension.Rows;
+                            int col = worksheet.Dimension.Columns;
+
+                            if (col == 7)
+                            {
+                                var headers = new List<string>();
+                                for (int i = 1; i <= col; i++)
+                                {
+                                    headers.Add(worksheet.Cells[1, i].Text);
+                                }
+
+                                for (int r = 2; r <= rows; r++)
+                                {
+                                    var rowData = new Dictionary<string, string>();
+
+                                    for (int c = 1; c <= col; c++)
+                                    {
+                                        rowData.Add(headers[c - 1], worksheet.Cells[r, c].Text);
+                                    }
+
+                                    Clientes elemento = new Clientes(rowData["nombre_clie"], int.Parse(rowData["telefono"]), rowData["correo"], int.Parse(rowData["identificacion"]), rowData["articulo_vendi"], rowData["referencia"],
+                                                                     int.Parse(rowData["comision"]) == 1 ? true : false);
+
+
+                                    Access.PutClientes(0, elemento, false);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Las columnas actuales de la hoja de calculo(xlsx) son diferentes a 7, por favor revisa el numero de columnas", "Error en columnas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
